@@ -6,6 +6,8 @@ This project aims to create a comprehensive data visualization dashboard using t
 
 ![image](https://github.com/user-attachments/assets/56e27be4-d574-42f6-8a33-84b53b4c448c)
 
+![likelikhood](https://github.com/user-attachments/assets/936afacf-0a34-4c60-a556-ebdb3e90fa96)
+
 <img width="953" alt="graph2" src="https://github.com/user-attachments/assets/a6524675-dc1b-45dc-b9a1-042915349a86">
 
 ![pie chart](https://github.com/user-attachments/assets/759c4808-92f2-4a94-90fc-478fdf93d4c4)
