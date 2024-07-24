@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="header">
+    <button class="pushable filter-button" onclick="toggleFilterForm()">
+        <span class="front">FILTER</span>
+    </button>
+    <div class="upload-button">
+        <form method="post" enctype="multipart/form-data" action="{% url 'filter_data' %}">
+            {% csrf_token %}
+            <input type="file" id="id_file" name="file" accept=".json">
+            <button class="pushable" type="submit" onclick="showSuccessAlert()">
+                <span class="front">UPLOAD</span>
+            </button>
+        </form>
+    </div>
+</div>
+<form id="filter-form" class="filter-form" method="get" action="{% url 'filter_data' %}" style="display: none;">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="end_year">End Year:</label>
+                <input type="text" class="input form-control" id="end_year" name="end_year">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="intensity">Intensity:</label>
+                <input type="text" class="input form-control" id="intensity" name="intensity">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="sector">Sector:</label>
+                <input type="text" class="input form-control" id="sector" name="sector">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="topic">Topic:</label>
+                <input type="text" class="input form-control" id="topic" name="topic">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="insight">Insight:</label>
+                <input type="text" class="input form-control" id="insight" name="insight">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="url">URL:</label>
+                <input type="text" class="input form-control" id="url" name="url">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <input type="text" class="input form-control" id="region" name="region">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="start_year">Start Year:</label>
+                <input type="text" class="input form-control" id="start_year" name="start_year">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="impact">Impact:</label>
+                <input type="text" class="input form-control" id="impact" name="impact">
+            </div>
+        </div>
+    </div> 
+
+    <button class="pushable" type="submit">
+        <span class="front">APPLY FILTER</span>
+    </button>
+</form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">End Year</th>
+                        <th style="width: 5%;">Intensity</th>
+                        <th style="width: 10%;">Sector</th>
+                        <th style="width: 10%;">Topic</th>
+                        <th style="width: 15%;">Insight</th>
+                        <th style="width: 10%;">URL</th>
+                        <th style="width: 10%;">Region</th>
+                        <th style="width: 5%;">Start Year</th>
+                        <th style="width: 5%;">Impact</th>
+                        <th style="width: 10%;">Country</th>
+                        <th style="width: 5%;">Relevance</th>
+                        <th style="width: 5%;">Pestle</th>
+                        <th style="width: 10%;">Source</th>
+                        <th style="width: 15%;">Title</th>
+                        <th style="width: 5%;">Likelihood</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.end_year }}</td>
+                        <td>{{ record.intensity }}</td>
+                        <td>{{ record.sector }}</td>
+                        <td>{{ record.topic }}</td>
+                        <td>{{ record.insight }}</td>
+                        <td><a href="{{ record.url }}" target="_blank">{{ record.url }}</a></td>
+                        <td>{{ record.region }}</td>
+                        <td>{{ record.start_year }}</td>
+                        <td>{{ record.impact }}</td>
+                        <td>{{ record.country }}</td>
+                        <td>{{ record.relevance }}</td>
+                        <td>{{ record.pestle }}</td>
+                        <td>{{ record.source }}</td>
+                        <td>{{ record.title }}</td>
+                        <td>{{ record.likelihood }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                {% if records.has_previous_page %}
+                  <a href="?page={{ records.previous_page_number }}">Previous</a>
+                {% endif %}
+              
+                <span class="current">
+                  Page {{ records.number }} of {{ records.paginator.num_pages }}
+                </span>
+              
+                {% if records.has_next_page %}
+                  <a href="?page={{ records.next_page_number }}">Next</a>
+                {% endif %}
+              </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleFilterForm() {
+        var form = document.getElementById('filter-form');
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+
+    function showSuccessAlert() {
+        var fileInput = document.getElementById('id_file');
+        if (fileInput.files.length > 0) {
+            alert("File successfully uploaded!");
+        } else {
+            alert("Please select a file to upload.");
+        }
+    }
+  
+</script>
+{% endblock %}

@@ -1,0 +1,86 @@
+/* styles.css */
+
+/* Custom button styling */
+.pushable {
+    background: hsl(0, 0%, 0%);
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: hsl(198, 84%, 64%);
+    color: white; /* Specify text color */
+    transform: translateY(-6px);
+}
+
+.pushable:active .front {
+    transform: translateY(-2px);
+}
+.filter-form {
+    display: none;
+    margin-top: 20px;
+}
+.pushable {
+    position: relative;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+.front {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: hsl(345deg 100% 47%);
+    color: white;
+    transform: translateY(-6px);
+}
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 80%;
+    margin-top: 50px; /* Adjust as needed */
+    margin-bottom: 50px; /* Adjust as needed */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.header h1 {
+    text-align: center;
+}
+
+.filter-button {
+    order: -1; /* Places the filter button at the beginning */
+}
+
+.upload-button {
+    order: 2; /* Places the upload button at the end */
+    margin-left: auto; /* Pushes upload button to the rightmost corner */
+}
+
+/* Adjustments for table */
+.table th:nth-child(6), .table td:nth-child(6) { width: 15%; } /* URL column */
+.table th:nth-child(16), .table td:nth-child(16) { width: 20%; } /* Title column */

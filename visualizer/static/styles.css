@@ -1,0 +1,169 @@
+/* Custom button styling */
+.pushable {
+    background: hsl(0, 0%, 0%);
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: hsl(198, 84%, 64%);
+    color: black;
+    transform: translateY(-6px);
+}
+
+.pushable:active .front {
+    transform: translateY(-2px);
+}
+
+.pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upload-button form {
+    display: flex;
+    align-items: center;
+}
+
+.upload-button input[type="file"] {
+    margin-right: 10px;
+}
+
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #343a40; /* Solid background */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    background-color: #343a40; /* Add a background color */
+    color: #ffffff;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    width: 250px;
+    left: 0;
+    top: 0;
+    z-index: 1000; /* Ensure sidebar appears above other content */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.sidebar-header i {
+    margin-right: 10px;
+}
+.sidebar-header span {
+    font-size: 2.5rem; /* Adjust the font size as needed */
+}
+.sidebar-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block; /* Ensures each link is displayed as a block element */
+}
+
+.sidebar-menu a:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.filter-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-form .row {
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}
+
+.pagination .current {
+    margin: 0 10px;
+}
+
+.input {
+    background-color: #212121;
+    max-width: 190px;
+    height: 40px;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 4px 4px 3px #02ffd5ef;
+    color: rgb(0, 255, 255);
+    outline-color: rgb(0, 255, 255);
+    transition: .1s;
+    transition-property: box-shadow;
+}
